@@ -27,6 +27,13 @@
         </a>
       </li>
       <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+      <li *jhiHasAnyAuthority="'ROLE_ADMIN'" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" routerLink="/gantt/home">
+          <span>
+            <span jhiTranslate="gantt.menu.home">Gantt</span>
+          </span>
+        </a>
+      </li>
       <li
         *ngSwitchCase="true"
         ngbDropdown

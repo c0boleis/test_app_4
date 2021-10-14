@@ -28,10 +28,10 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
         },
         {
           path: 'gantt',
-          // data: {
-          //   authorities: [Authority.USER],
-          // },
-          // canActivate: [UserRouteAccessService],
+          data: {
+            authorities: [Authority.ADMIN],
+          },
+          canActivate: [UserRouteAccessService],
           loadChildren: () => import('./gantt/gantt.module').then(m => m.GanttModule),
         },
         {
