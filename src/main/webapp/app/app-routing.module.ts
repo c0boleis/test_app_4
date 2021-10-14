@@ -27,6 +27,14 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
           loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
         },
         {
+          path: 'gantt',
+          // data: {
+          //   authorities: [Authority.USER],
+          // },
+          // canActivate: [UserRouteAccessService],
+          loadChildren: () => import('./gantt/gantt.module').then(m => m.GanttModule),
+        },
+        {
           path: 'login',
           loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
         },
