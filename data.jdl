@@ -1,0 +1,6 @@
+// requirement management
+entity Task {
+	taskName String
+	startTime LocalDate
+	endTime LocalDate
+}
