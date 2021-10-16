@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ITask } from 'app/entities/task/task.model';
 import { TaskService } from '../../entities/task/service/task.service';
 import { HttpResponse } from '@angular/common/http';

@@ -8,16 +8,17 @@ import * as dayjs from 'dayjs';
   styleUrls: ['./gantt-object.component.scss'],
 })
 export class GanttObjectComponent {
-  refDate: dayjs.Dayjs = dayjs('2021-10-14');
+  //mont 0-11
+  //day 1-31
+  refDate: dayjs.Dayjs = dayjs(new Date(2021, 9, 14));
 
   @Input()
   task?: Task;
 
   getLeft(): number {
-    const delta = this.task?.startTime?.subtract(this.refDate.date());
+    const delta = this.task?.startTime?.diff(this.refDate, 'day');
     if (delta) {
-      const value: number = delta.date();
-      return value * 10;
+      return delta;
     }
     return 0;
   }
