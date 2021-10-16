@@ -1,1 +1,3 @@
-<p>gantt-view works!</p>
+<div id="entities" *ngIf="tasks && tasks.length > 0">
+  <jhi-gantt-object *ngFor="let task of tasks" [task]="task"></jhi-gantt-object>
+</div>

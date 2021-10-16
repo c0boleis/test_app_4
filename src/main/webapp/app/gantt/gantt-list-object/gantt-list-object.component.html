@@ -1,0 +1,3 @@
+<div *ngIf="task">
+  <a [routerLink]="['/task', task.id, 'view']">{{ task.taskName }}</a>
+</div>
