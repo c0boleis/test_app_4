@@ -26,6 +26,12 @@ export class GanttObjectComponent {
   getObjStyle(): any {
     const pxSuffix = 'px';
     const valueL: string = this.getLeft().toString();
-    return { position: 'relative', left: valueL + pxSuffix };
+    return {
+      border: 'solid 1px #ccc',
+      cursor: 'move',
+      position: 'relative',
+      transition: 'box-shadow 200ms cubic-bezier(0, 0, 0.2, 1)',
+      left: valueL + pxSuffix,
+    };
   }
 }

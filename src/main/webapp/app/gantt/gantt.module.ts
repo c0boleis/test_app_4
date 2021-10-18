@@ -7,9 +7,10 @@ import { ganttState } from './gantt.route';
 import { GanttViewComponent } from './gantt-view/gantt-view.component';
 import { GanttObjectComponent } from './gantt-object/gantt-object.component';
 import { GanttListObjectComponent } from './gantt-list-object/gantt-list-object.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(ganttState)],
+  imports: [CommonModule, DragDropModule, RouterModule.forChild(ganttState)],
   declarations: [GanttToolsComponent, GanttMainComponent, GanttViewComponent, GanttObjectComponent, GanttListObjectComponent],
 })
 export class GanttModule {}
