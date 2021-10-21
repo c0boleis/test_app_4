@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, Output, Attribute } from '@angular/core';
 import { Task } from '../../entities/task/task.model';
 import * as dayjs from 'dayjs';
 
@@ -12,8 +12,16 @@ export class GanttObjectComponent {
   //day 1-31
   refDate: dayjs.Dayjs = dayjs(new Date(2021, 9, 14));
 
+  @Output()
+  dragPosition = { x: 0, y: 0 };
+
   @Input()
   task?: Task;
+
+  constructor(@Attribute('task-in') public taskIn: Task) {
+    this.task = taskIn;
+    this.dragPosition = { x: this.getLeft(), y: 0 };
+  }
 
   getLeft(): number {
     const delta = this.task?.startTime?.diff(this.refDate, 'day');
@@ -21,17 +29,5 @@ export class GanttObjectComponent {
       return delta;
     }
     return 0;
-  }
-
-  getObjStyle(): any {
-    const pxSuffix = 'px';
-    const valueL: string = this.getLeft().toString();
-    return {
-      border: 'solid 1px #ccc',
-      cursor: 'move',
-      position: 'relative',
-      transition: 'box-shadow 200ms cubic-bezier(0, 0, 0.2, 1)',
-      left: valueL + pxSuffix,
-    };
   }
 }
