@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, Output, Attribute } from '@angular/core';
+import { Component, Input, ElementRef, Output, Attribute, OnInit } from '@angular/core';
 import { Task } from '../../entities/task/task.model';
 import * as dayjs from 'dayjs';
 
@@ -7,7 +7,7 @@ import * as dayjs from 'dayjs';
   templateUrl: './gantt-object.component.html',
   styleUrls: ['./gantt-object.component.scss'],
 })
-export class GanttObjectComponent {
+export class GanttObjectComponent implements OnInit {
   //mont 0-11
   //day 1-31
   refDate: dayjs.Dayjs = dayjs(new Date(2021, 9, 14));
@@ -18,8 +18,7 @@ export class GanttObjectComponent {
   @Input()
   task?: Task;
 
-  constructor(@Attribute('task-in') public taskIn: Task) {
-    this.task = taskIn;
+  ngOnInit(): void {
     this.dragPosition = { x: this.getLeft(), y: 0 };
   }
 

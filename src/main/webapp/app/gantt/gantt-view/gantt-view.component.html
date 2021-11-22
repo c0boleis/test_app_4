@@ -1,5 +1,5 @@
 <div class="gantt-view" *ngIf="tasks && tasks.length > 0">
   <div *ngFor="let task of tasks">
-    <jhi-gantt-object task-in="task"></jhi-gantt-object>
+    <jhi-gantt-object [task]="task"></jhi-gantt-object>
   </div>
 </div>
