@@ -15,6 +15,7 @@ import { finalize } from 'rxjs/internal/operators/finalize';
 export class GanttObjectComponent implements OnInit {
   // mont 0-11
   // day 1-31
+  @Input()
   refDate: dayjs.Dayjs = dayjs(new Date(2021, 9, 14));
 
   isSaving = false;
