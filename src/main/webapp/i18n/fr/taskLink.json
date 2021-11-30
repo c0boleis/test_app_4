@@ -1,0 +1,25 @@
+{
+  "testApp4App": {
+    "taskLink": {
+      "home": {
+        "title": "TaskLinks",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Task Link",
+        "createOrEditLabel": "Créer ou éditer un Task Link",
+        "notFound": "Aucun Task Link trouvé"
+      },
+      "created": "Un nouveau Task Link a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Task Link avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Task Link avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Task Link {{ id }} ?"
+      },
+      "detail": {
+        "title": "Task Link"
+      },
+      "id": "ID",
+      "startTask": "Start Task",
+      "endTask": "End Task"
+    }
+  }
+}

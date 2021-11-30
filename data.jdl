@@ -4,3 +4,12 @@ entity Task {
 	startTime LocalDate
 	endTime LocalDate
 }
+
+entity TaskLink {
+	
+}
+
+relationship ManyToOne {
+  TaskLink{startTask} to Task{outLinks}
+  TaskLink{endTask} to Task{inLinks}
+}

@@ -43,7 +43,7 @@
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
     "languages": ["fr", "en"],
-    "entities": ["Task"],
-    "lastLiquibaseTimestamp": 1634275907000
+    "entities": ["Task", "TaskLink"],
+    "lastLiquibaseTimestamp": 1638209493000
   }
 }

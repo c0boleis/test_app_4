@@ -14,7 +14,20 @@
       "fieldType": "LocalDate"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "taskLink",
+      "otherEntityRelationshipName": "startTask",
+      "relationshipName": "outLinks"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "taskLink",
+      "otherEntityRelationshipName": "endTask",
+      "relationshipName": "inLinks"
+    }
+  ],
   "entityTableName": "task",
   "dto": "no",
   "pagination": "no",

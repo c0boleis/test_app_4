@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity TaskLink.
+    -->
+    <changeSet id="20211129181133-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="start_task_id"
+                                 baseTableName="task_link"
+                                 constraintName="fk_task_link__start_task_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task"/>
+
+        <addForeignKeyConstraint baseColumnNames="end_task_id"
+                                 baseTableName="task_link"
+                                 constraintName="fk_task_link__end_task_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task"/>
+    </changeSet>
+</databaseChangeLog>

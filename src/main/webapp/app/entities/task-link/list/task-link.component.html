@@ -1,0 +1,88 @@
+<div>
+  <h2 id="page-heading" data-cy="TaskLinkHeading">
+    <span jhiTranslate="testApp4App.taskLink.home.title">Task Links</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="testApp4App.taskLink.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-task-link"
+        [routerLink]="['/task-link/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="testApp4App.taskLink.home.createLabel"> Create a new Task Link </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="taskLinks?.length === 0">
+    <span jhiTranslate="testApp4App.taskLink.home.notFound">No taskLinks found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="taskLinks && taskLinks.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="testApp4App.taskLink.startTask">Start Task</span></th>
+          <th scope="col"><span jhiTranslate="testApp4App.taskLink.endTask">End Task</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let taskLink of taskLinks; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/task-link', taskLink.id, 'view']">{{ taskLink.id }}</a>
+          </td>
+          <td>
+            <div *ngIf="taskLink.startTask">
+              <a [routerLink]="['/task', taskLink.startTask?.id, 'view']">{{ taskLink.startTask?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="taskLink.endTask">
+              <a [routerLink]="['/task', taskLink.endTask?.id, 'view']">{{ taskLink.endTask?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/task-link', taskLink.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/task-link', taskLink.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(taskLink)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

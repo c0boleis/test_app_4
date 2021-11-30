@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="taskLink">
+      <h2 data-cy="taskLinkDetailsHeading"><span jhiTranslate="testApp4App.taskLink.detail.title">Task Link</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ taskLink.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="testApp4App.taskLink.startTask">Start Task</span></dt>
+        <dd>
+          <div *ngIf="taskLink.startTask">
+            <a [routerLink]="['/task', taskLink.startTask?.id, 'view']">{{ taskLink.startTask?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="testApp4App.taskLink.endTask">End Task</span></dt>
+        <dd>
+          <div *ngIf="taskLink.endTask">
+            <a [routerLink]="['/task', taskLink.endTask?.id, 'view']">{{ taskLink.endTask?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/task-link', taskLink.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
