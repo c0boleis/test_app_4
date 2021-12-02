@@ -3,6 +3,8 @@ import { ITask } from 'app/entities/task/task.model';
 import { TaskService } from '../../entities/task/service/task.service';
 import { HttpResponse } from '@angular/common/http';
 import * as dayjs from 'dayjs';
+import { TaskLinkService } from 'app/entities/task-link/service/task-link.service';
+import { ITaskLink } from 'app/entities/task-link/task-link.model';
 
 @Component({
   selector: 'jhi-gantt-view',
@@ -11,13 +13,14 @@ import * as dayjs from 'dayjs';
 })
 export class GanttViewComponent implements OnInit {
   tasks?: ITask[];
+  taskLinks?: ITaskLink[];
   isLoading = false;
   startDate: dayjs.Dayjs = dayjs(new Date(2021, 9, 14));
   endDate: dayjs.Dayjs | undefined;
   /*
    * Use TaskService
    */
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService, private taskLinkService: TaskLinkService) {}
 
   loadAll(): void {
     this.isLoading = true;
@@ -27,6 +30,16 @@ export class GanttViewComponent implements OnInit {
         this.isLoading = false;
         this.tasks = res.body ?? [];
         this.updateDateLimit();
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
+
+    this.taskLinkService.query().subscribe(
+      (res: HttpResponse<ITaskLink[]>) => {
+        this.isLoading = false;
+        this.taskLinks = res.body ?? [];
       },
       () => {
         this.isLoading = false;

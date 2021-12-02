@@ -32,6 +32,15 @@ export class GanttObjectComponent implements OnInit {
     this.freeDragPosition = { x: this.getLeft(), y: 0 };
   }
 
+  public getDivId(): string {
+    if (this.task?.id !== undefined) {
+      return 'task_' + this.task.id.toString();
+    } else {
+      console.error('ID not found');
+      return 'NONE_ID';
+    }
+  }
+
   getLeft(): number {
     const delta = this.task?.startTime?.diff(this.refDate, 'day');
     if (delta) {

@@ -2,4 +2,7 @@
   <div *ngFor="let task of tasks">
     <jhi-gantt-object [task]="task" [refDate]="startDate"></jhi-gantt-object>
   </div>
+  <div *ngFor="let tasklink of taskLinks">
+    <jhi-gantt-link [taskLink]="tasklink"></jhi-gantt-link>
+  </div>
 </div>
